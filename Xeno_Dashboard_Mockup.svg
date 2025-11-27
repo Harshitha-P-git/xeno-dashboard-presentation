@@ -1,0 +1,283 @@
+<svg width="1450" height="1400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6A5AE0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="metricGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e6fffa;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="metricGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fed7d7;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="metricGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c6f6d5;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="metricGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#feebc8;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="cardShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="0" dy="1" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.15"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="hoverShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1450" height="1400" fill="#f5f7fa"/>
+  
+  <!-- Top Navigation Bar -->
+  <rect x="0" y="0" width="1450" height="64" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="32" y="16" width="120" height="32" rx="6" fill="url(#purpleGradient)"/>
+  <text x="92" y="36" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle">XENO</text>
+  <text x="180" y="40" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#1a202c">Dashboard</text>
+  
+  <!-- Search Bar -->
+  <rect x="450" y="20" width="300" height="32" rx="6" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="470" y="40" font-family="Inter, sans-serif" font-size="14" fill="#a0aec0">Search...</text>
+  <text x="730" y="40" font-family="Arial" font-size="16" fill="#718096" text-anchor="middle">🔍</text>
+  
+  <!-- Navigation Icons - evenly spaced -->
+  <rect x="1200" y="16" width="40" height="40" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="1220" y="42" font-family="Arial" font-size="18" text-anchor="middle">⚙️</text>
+  <rect x="1255" y="16" width="40" height="40" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="1275" y="42" font-family="Arial" font-size="18" text-anchor="middle">🔔</text>
+  <rect x="1310" y="16" width="40" height="40" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="1330" y="42" font-family="Arial" font-size="18" text-anchor="middle">❓</text>
+  <circle cx="1370" cy="32" r="20" fill="url(#purpleGradient)"/>
+  <text x="1370" y="38" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">JD</text>
+  
+  <!-- Alert Banner -->
+  <rect x="0" y="64" width="1450" height="56" fill="#fffbf0" stroke="#f6ad55" stroke-width="0"/>
+  <rect x="0" y="64" width="4" height="56" fill="#f6ad55"/>
+  <text x="32" y="98" font-family="Arial" font-size="22" fill="#744210">⚠️</text>
+  <text x="60" y="98" font-family="Inter, sans-serif" font-size="15" fill="#744210">Campaign "Summer Sale" has exceeded budget threshold</text>
+  <text x="600" y="98" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#6A5AE0">Review Budget</text>
+  
+  <!-- Container -->
+  <g transform="translate(32, 160)">
+    
+    <!-- Key Metrics Section -->
+    <g>
+      <!-- Active Campaigns Card -->
+      <rect x="0" y="0" width="320" height="140" rx="12" fill="url(#metricGrad1)" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <rect x="20" y="20" width="32" height="32" rx="8" fill="#e6fffa"/>
+      <text x="36" y="40" font-family="Arial" font-size="16" text-anchor="middle">📊</text>
+      <text x="20" y="68" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#2d3748" text-transform="uppercase" letter-spacing="0.5">Active Campaigns</text>
+      <text x="20" y="100" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#1a202c">12</text>
+      <text x="20" y="125" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#38a169">↑ 2 vs last week</text>
+      
+      <!-- Today's Reach Card -->
+      <rect x="344" y="0" width="320" height="140" rx="12" fill="url(#metricGrad2)" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <rect x="364" y="20" width="32" height="32" rx="8" fill="#fed7d7"/>
+      <text x="380" y="40" font-family="Arial" font-size="16" text-anchor="middle">📱</text>
+      <text x="364" y="68" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#2d3748" text-transform="uppercase" letter-spacing="0.5">Today's Reach</text>
+      <text x="364" y="100" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#1a202c">45.2K</text>
+      <text x="364" y="125" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#38a169">↑ 12% vs yesterday</text>
+      
+      <!-- Revenue Impact Card -->
+      <rect x="688" y="0" width="320" height="140" rx="12" fill="url(#metricGrad3)" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <rect x="708" y="20" width="32" height="32" rx="8" fill="#c6f6d5"/>
+      <text x="724" y="40" font-family="Arial" font-size="16" text-anchor="middle">💰</text>
+      <text x="708" y="68" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#2d3748" text-transform="uppercase" letter-spacing="0.5">Revenue Impact</text>
+      <text x="708" y="100" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#1a202c">$125K</text>
+      <text x="708" y="125" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#38a169">↑ 18% (7 days)</text>
+      
+      <!-- Engagement Rate Card -->
+      <rect x="1032" y="0" width="320" height="140" rx="12" fill="url(#metricGrad4)" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <rect x="1052" y="20" width="32" height="32" rx="8" fill="#feebc8"/>
+      <text x="1068" y="40" font-family="Arial" font-size="16" text-anchor="middle">📈</text>
+      <text x="1052" y="68" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#2d3748" text-transform="uppercase" letter-spacing="0.5">Engagement Rate</text>
+      <text x="1052" y="100" font-family="Inter, sans-serif" font-size="32" font-weight="700" fill="#1a202c">8.3%</text>
+      <text x="1052" y="125" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#38a169">↑ 0.5% (7 days)</text>
+    </g>
+    
+    <!-- Section Divider -->
+    <line x1="0" y1="152" x2="1386" y2="152" stroke="#e2e8f0" stroke-width="1"/>
+    
+    <!-- Active Campaigns Section -->
+    <g transform="translate(0, 168)">
+      <text x="0" y="0" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#1a202c">Active Campaigns</text>
+      <line x1="0" y1="8" x2="180" y2="8" stroke="#6A5AE0" stroke-width="3"/>
+      <line x1="0" y1="10" x2="180" y2="10" stroke="#4a5568" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Campaign Card 1 -->
+      <rect x="0" y="30" width="1386" height="100" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <text x="20" y="60" font-family="Arial" font-size="20">📱</text>
+      <text x="50" y="58" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1a202c">Summer Sale 2024</text>
+      <rect x="220" y="45" width="70" height="22" rx="11" fill="#25D366"/>
+      <text x="255" y="60" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">WhatsApp</text>
+      <text x="50" y="80" font-family="Inter, sans-serif" font-size="14" fill="#718096">Started 2h ago</text>
+      <rect x="300" y="45" width="65" height="24" rx="12" fill="#c6f6d5"/>
+      <text x="332" y="61" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#22543d" text-anchor="middle">Running</text>
+      <text x="450" y="58" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1a202c">12.5K</text>
+      <text x="450" y="78" font-family="Inter, sans-serif" font-size="12" fill="#718096">sent</text>
+      <text x="530" y="58" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1a202c">8.2%</text>
+      <text x="530" y="78" font-family="Inter, sans-serif" font-size="12" fill="#718096">CTR</text>
+      <!-- Button group aligned right, vertically centered, with 10px margin from right edge -->
+      <rect x="1176" y="64" width="60" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="1206" y="84" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#1a202c" text-anchor="middle">Pause</text>
+      <rect x="1246" y="64" width="60" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="1276" y="84" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#1a202c" text-anchor="middle">View</text>
+      <rect x="1316" y="64" width="60" height="32" rx="6" fill="url(#purpleGradient)"/>
+      <text x="1346" y="84" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#ffffff" text-anchor="middle">Edit</text>
+      
+      <!-- Campaign Card 2 -->
+      <rect x="0" y="150" width="1386" height="100" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <text x="20" y="180" font-family="Arial" font-size="20">📧</text>
+      <text x="50" y="178" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1a202c">Welcome Series</text>
+      <rect x="220" y="165" width="50" height="22" rx="11" fill="#4285F4"/>
+      <text x="245" y="180" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Email</text>
+      <text x="50" y="200" font-family="Inter, sans-serif" font-size="14" fill="#718096">Started 1d ago</text>
+      <rect x="300" y="165" width="65" height="24" rx="12" fill="#c6f6d5"/>
+      <text x="332" y="181" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#22543d" text-anchor="middle">Running</text>
+      <text x="450" y="178" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1a202c">8.2K</text>
+      <text x="450" y="198" font-family="Inter, sans-serif" font-size="12" fill="#718096">sent</text>
+      <text x="530" y="178" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#1a202c">12.1%</text>
+      <text x="530" y="198" font-family="Inter, sans-serif" font-size="12" fill="#718096">CTR</text>
+      <!-- Button group aligned right, vertically centered, with 10px margin from right edge -->
+      <rect x="1176" y="184" width="60" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="1206" y="204" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#1a202c" text-anchor="middle">Pause</text>
+      <rect x="1246" y="184" width="60" height="32" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="1276" y="204" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#1a202c" text-anchor="middle">View</text>
+      <rect x="1316" y="184" width="60" height="32" rx="6" fill="url(#purpleGradient)"/>
+      <text x="1346" y="204" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#ffffff" text-anchor="middle">Edit</text>
+    </g>
+    
+    <!-- Section Divider -->
+    <line x1="0" y1="468" x2="1386" y2="468" stroke="#e2e8f0" stroke-width="1"/>
+    
+    <!-- Quick Actions & Recent Activity -->
+    <g transform="translate(0, 488)">
+      <!-- Quick Actions Column -->
+      <rect x="0" y="0" width="656" height="400" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <text x="20" y="30" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#1a202c">Quick Actions</text>
+      <line x1="20" y1="38" x2="200" y2="38" stroke="#6A5AE0" stroke-width="3"/>
+      <line x1="20" y1="40" x2="200" y2="40" stroke="#4a5568" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Action Tiles -->
+      <rect x="20" y="60" width="300" height="85" rx="10" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#hoverShadow)"/>
+      <text x="170" y="100" font-family="Arial" font-size="28" text-anchor="middle">📊</text>
+      <text x="170" y="125" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c" text-anchor="middle">Create Campaign</text>
+      
+      <rect x="336" y="60" width="300" height="85" rx="10" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#hoverShadow)"/>
+      <text x="486" y="100" font-family="Arial" font-size="28" text-anchor="middle">🎁</text>
+      <text x="486" y="125" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c" text-anchor="middle">Create Offer</text>
+      
+      <rect x="20" y="165" width="300" height="85" rx="10" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#hoverShadow)"/>
+      <text x="170" y="205" font-family="Arial" font-size="28" text-anchor="middle">📈</text>
+      <text x="170" y="230" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c" text-anchor="middle">View Analytics</text>
+      
+      <rect x="336" y="165" width="300" height="85" rx="10" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#hoverShadow)"/>
+      <text x="486" y="205" font-family="Arial" font-size="28" text-anchor="middle">👥</text>
+      <text x="486" y="230" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c" text-anchor="middle">Segments</text>
+      
+      <rect x="20" y="270" width="300" height="85" rx="10" fill="#f7fafc" stroke="#e2e8f0" stroke-width="1" filter="url(#hoverShadow)"/>
+      <text x="170" y="310" font-family="Arial" font-size="28" text-anchor="middle">🔄</text>
+      <text x="170" y="335" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c" text-anchor="middle">Automation</text>
+      
+      <!-- Recent Activity Column -->
+      <rect x="696" y="0" width="690" height="400" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <text x="716" y="30" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#1a202c">Recent Activity &amp; Alerts</text>
+      <line x1="716" y1="38" x2="900" y2="38" stroke="#6A5AE0" stroke-width="3"/>
+      <line x1="716" y1="40" x2="900" y2="40" stroke="#4a5568" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Activity Item 1 -->
+      <rect x="716" y="60" width="650" height="95" rx="8" fill="#f7fafc"/>
+      <text x="736" y="95" font-family="Arial" font-size="22">🎉</text>
+      <text x="766" y="90" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c">Campaign "Flash Sale" completed</text>
+      <text x="766" y="110" font-family="Inter, sans-serif" font-size="12" fill="#718096">2 hours ago • 15.3% CTR</text>
+      <text x="766" y="130" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6A5AE0">View Results →</text>
+      
+      <!-- Activity Item 2 -->
+      <rect x="716" y="175" width="650" height="95" rx="8" fill="#fff5f5"/>
+      <text x="736" y="210" font-family="Arial" font-size="24" fill="#e53e3e">⚠️</text>
+      <text x="766" y="205" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c">Campaign "Welcome Series" CTR below average</text>
+      <text x="766" y="225" font-family="Inter, sans-serif" font-size="12" fill="#718096">12.1% vs 15% avg</text>
+      <text x="766" y="245" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6A5AE0">Optimize →</text>
+      
+      <!-- Activity Item 3 -->
+      <rect x="716" y="290" width="650" height="95" rx="8" fill="#f7fafc"/>
+      <text x="736" y="325" font-family="Arial" font-size="22">📊</text>
+      <text x="766" y="320" font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#1a202c">New segment opportunity detected</text>
+      <text x="766" y="340" font-family="Inter, sans-serif" font-size="12" fill="#718096">"High-value customers" (2,450 users)</text>
+      <text x="766" y="360" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#6A5AE0">Create Campaign →</text>
+    </g>
+    
+    <!-- Section Divider -->
+    <line x1="0" y1="928" x2="1386" y2="928" stroke="#e2e8f0" stroke-width="1"/>
+    
+    <!-- Performance Snapshot -->
+    <g transform="translate(0, 948)">
+      <text x="0" y="0" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#1a202c">Performance Snapshot</text>
+      <line x1="0" y1="8" x2="220" y2="8" stroke="#6A5AE0" stroke-width="3"/>
+      <line x1="0" y1="10" x2="220" y2="10" stroke="#4a5568" stroke-width="1" opacity="0.3"/>
+      
+      <!-- Chart 1 -->
+      <rect x="0" y="30" width="450" height="240" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <text x="20" y="55" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#1a202c">Campaign Performance (7 days)</text>
+      <rect x="20" y="70" width="410" height="180" rx="8" fill="#f7fafc" stroke="#cbd5e0" stroke-width="1"/>
+      <!-- Enhanced dummy line chart with multiple lines - more visible -->
+      <polyline points="50,220 90,180 130,200 170,150 210,170 250,140 290,160 330,130 370,150 400,120" fill="none" stroke="#6A5AE0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+      <polyline points="50,230 90,190 130,210 170,160 210,180 250,150 290,170 330,140 370,160 400,130" fill="none" stroke="#4285F4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+      <circle cx="50" cy="220" r="6" fill="#6A5AE0"/>
+      <circle cx="400" cy="120" r="6" fill="#6A5AE0"/>
+      <circle cx="50" cy="230" r="5" fill="#4285F4"/>
+      <circle cx="400" cy="130" r="5" fill="#4285F4"/>
+      
+      <!-- Chart 2 -->
+      <rect x="470" y="30" width="450" height="240" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <text x="490" y="55" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#1a202c">Channel Breakdown</text>
+      <rect x="490" y="70" width="410" height="180" rx="8" fill="#f7fafc" stroke="#cbd5e0" stroke-width="1"/>
+      <!-- Enhanced dummy pie chart with 3 visible slices - more visible -->
+      <path d="M 695 160 A 75 75 0 0 1 770 160 L 695 160 Z" fill="#6A5AE0" opacity="1"/>
+      <path d="M 695 160 A 75 75 0 0 1 695 235 L 695 160 Z" fill="#25D366" opacity="1"/>
+      <path d="M 695 160 A 75 75 0 0 1 620 160 L 695 160 Z" fill="#4285F4" opacity="1"/>
+      <circle cx="695" cy="160" r="38" fill="#f7fafc"/>
+      <circle cx="695" cy="160" r="3" fill="#2d3748"/>
+      
+      <!-- Chart 3 -->
+      <rect x="940" y="30" width="446" height="240" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" filter="url(#cardShadow)"/>
+      <text x="960" y="55" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#1a202c">Revenue Trend</text>
+      <rect x="960" y="70" width="406" height="180" rx="8" fill="#f7fafc" stroke="#cbd5e0" stroke-width="1"/>
+      <!-- Enhanced dummy bar chart - more visible bars -->
+      <rect x="990" y="190" width="52" height="60" rx="3" fill="#6A5AE0" opacity="1"/>
+      <rect x="1060" y="165" width="52" height="85" rx="3" fill="#6A5AE0" opacity="1"/>
+      <rect x="1130" y="145" width="52" height="105" rx="3" fill="#4285F4" opacity="1"/>
+      <rect x="1200" y="130" width="52" height="120" rx="3" fill="#6A5AE0" opacity="1"/>
+      <rect x="1270" y="115" width="52" height="135" rx="3" fill="#4285F4" opacity="1"/>
+    </g>
+  </g>
+</svg>

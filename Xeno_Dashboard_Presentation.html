@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xeno Dashboard Design - Presentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-image: url('bgimage.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px 0;
+            font-size: 18px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(-45deg, rgba(102, 126, 234, 0.65), rgba(118, 75, 162, 0.65), rgba(240, 147, 251, 0.65), rgba(79, 172, 254, 0.65));
+            background-size: 400% 400%;
+            background-attachment: fixed;
+            animation: gradientShift 15s ease infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+            page-break-after: always;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        h1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3.5em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
+            animation: slideInLeft 0.6s ease-out;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            animation: slideInRight 0.6s ease-out 0.2s both;
+            line-height: 1.3;
+        }
+
+        h3 {
+            color: #555;
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .wireframe {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 3px solid #dee2e6;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            overflow-x: auto;
+            white-space: pre;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .wireframe::before {
+            content: '📐';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+            opacity: 0.3;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 4s ease infinite;
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 3s ease infinite;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .metric-card:nth-child(1) { animation-delay: 0.1s; }
+        .metric-card:nth-child(2) { animation-delay: 0.2s; }
+        .metric-card:nth-child(3) { animation-delay: 0.3s; }
+        .metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .metric-card h3 {
+            color: white;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.95;
+        }
+
+        .metric-value {
+            font-size: 4em;
+            font-weight: 800;
+            margin: 15px 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .metric-card:nth-child(1) .metric-value { animation-delay: 0s; }
+        .metric-card:nth-child(2) .metric-value { animation-delay: 0.5s; }
+        .metric-card:nth-child(3) .metric-value { animation-delay: 1s; }
+        .metric-card:nth-child(4) .metric-value { animation-delay: 1.5s; }
+
+        .metric-trend {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .alert-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            border-left: 6px solid #ffc107;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.2);
+            animation: slideInLeft 0.5s ease-out;
+            position: relative;
+            font-size: 1.15em;
+        }
+
+        .alert-box::before {
+            content: '⚠️';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+        }
+
+        .alert-box strong {
+            margin-left: 35px;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+            border-left: 6px solid #0dcaf0;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(13, 202, 240, 0.2);
+            animation: slideInRight 0.5s ease-out;
+            position: relative;
+            font-size: 1.15em;
+        }
+
+        .info-box::before {
+            content: '💡';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+        }
+
+        .info-box h3,
+        .info-box strong {
+            margin-left: 35px;
+        }
+
+        ul, ol {
+            margin-left: 40px;
+            margin-top: 15px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        p {
+            font-size: 1.15em;
+            line-height: 1.7;
+        }
+
+        li:nth-child(1) { animation-delay: 0.1s; }
+        li:nth-child(2) { animation-delay: 0.2s; }
+        li:nth-child(3) { animation-delay: 0.3s; }
+        li:nth-child(4) { animation-delay: 0.4s; }
+        li:nth-child(5) { animation-delay: 0.5s; }
+        li:nth-child(6) { animation-delay: 0.6s; }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin: 30px 0;
+        }
+
+        .two-column > div {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .two-column > div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 15px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .icon-large {
+            font-size: 2.2em;
+            display: inline-block;
+            margin-right: 12px;
+            animation: float 3s ease-in-out infinite;
+            vertical-align: middle;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .slide {
+                page-break-after: always;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            .slide {
+                padding: 30px;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(255, 193, 7, 0.3);
+        }
+
+        code {
+            background: linear-gradient(135deg, #f4f4f4 0%, #e9ecef 100%);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #dee2e6;
+        }
+
+        .title-slide {
+            text-align: center;
+            padding: 80px 60px;
+        }
+
+        .title-slide h1 {
+            font-size: 4.5em;
+            border: none;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-slide h2 {
+            font-size: 2.5em;
+            color: #764ba2;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .author-info {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 3px solid;
+            border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
+        }
+
+        .author-info p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .author-info strong {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .competitor-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid;
+            transition: all 0.3s ease;
+            font-size: 1.15em;
+        }
+
+        .competitor-card h3 {
+            font-size: 2em;
+        }
+
+        .competitor-card:nth-child(1) { border-left-color: #667eea; }
+        .competitor-card:nth-child(2) { border-left-color: #764ba2; }
+        .competitor-card:nth-child(3) { border-left-color: #f093fb; }
+
+        .competitor-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .goal-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 30px;
+            border-radius: 16px;
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .goal-card:hover {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .goal-card h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .goal-card p {
+            font-size: 1.2em;
+        }
+
+        .feature-card p {
+            font-size: 1.2em;
+        }
+
+        .feature-card h2 {
+            font-size: 2em;
+        }
+
+        .conclusion-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .conclusion-box h2,
+        .conclusion-box li strong {
+            color: white;
+        }
+
+        .conclusion-box ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .conclusion-box li {
+            margin: 15px 0;
+            font-size: 1.3em;
+        }
+
+        .conclusion-box h2 {
+            font-size: 2.5em;
+        }
+
+        .checkmark {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Slide 1: Title -->
+        <div class="slide title-slide">
+            <h1>Xeno Dashboard Design</h1>
+            <h2>First Screen After Login</h2>
+            <p style="font-size: 1.6em; margin-top: 40px; color: #666; font-weight: 500;">
+                A Product Manager's Approach to Creating a Genuinely Useful Dashboard
+            </p>
+            <div class="author-info">
+                <p><strong>Product:</strong> Xeno - Retail Marketing Platform</p>
+                <p><strong>Focus:</strong> Help marketers understand account status and take meaningful actions quickly</p>
+                <p style="margin-top: 30px;"><strong>Author:</strong> P Harshitha</p>
+                <p><strong>Email:</strong> harshithaperala@gmail.com</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: User Persona -->
+        <div class="slide">
+            <h1><span class="icon-large">👤</span>User Persona</h1>
+            <h2>Retail Marketer / CRM Manager</h2>
+            
+            <div class="info-box">
+                <h3>Role & Responsibilities</h3>
+                <ul>
+                    <li>📱 Run WhatsApp, SMS, Email campaigns across multiple channels</li>
+                    <li>📊 Monitor campaign performance and engagement metrics</li>
+                    <li>👥 Manage customer segments and segmentation strategies</li>
+                    <li>🔄 Build and maintain automated customer journeys</li>
+                    <li>📈 Analyze campaign performance, revenue impact, and product metrics</li>
+                </ul>
+            </div>
+
+            <div class="two-column" style="margin-top: 30px;">
+                <div class="goal-card">
+                    <h3>🎯 Goals</h3>
+                    <ul>
+                        <li>Increase customer engagement</li>
+                        <li>Optimize campaign performance</li>
+                        <li>Understand customer behavior</li>
+                        <li>Drive revenue through campaigns</li>
+                    </ul>
+                </div>
+                <div class="goal-card">
+                    <h3>😓 Pain Points</h3>
+                    <ul>
+                        <li>Hard to track performance</li>
+                        <li>Too many tools to manage</li>
+                        <li>No single-source overview</li>
+                        <li>Time-consuming navigation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Assumptions -->
+        <div class="slide">
+            <h1><span class="icon-large">💭</span>Assumptions</h1>
+            <p style="margin-bottom: 30px; font-size: 1.3em; color: #666;">Key assumptions about users and usage patterns:</p>
+            
+            <div class="two-column">
+                <div class="feature-card">
+                    <h3>📅 Daily Login</h3>
+                    <p>Marketers log in daily to check account status</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Multiple Campaigns</h3>
+                    <p>Users manage multiple campaigns across channels simultaneously</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Quick Access</h3>
+                    <p>Users need quick access to insights and actions</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎯 Efficiency Focus</h3>
+                    <p>Dashboard should reduce time spent navigating other pages</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👁️ Real-Time Monitoring</h3>
+                    <p>Users need to monitor active campaigns in real-time</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚀 Action-Oriented</h3>
+                    <p>Users come with specific tasks in mind</p>
+                </div>
+            </div>
+
+            <div class="alert-box" style="margin-top: 30px;">
+                <strong>These assumptions guide our design decisions and help prioritize features.</strong>
+            </div>
+        </div>
+
+        <!-- Slide 4: Dashboard Goals -->
+        <div class="slide">
+            <h1><span class="icon-large">🎯</span>Dashboard Goals</h1>
+            
+            <div class="two-column">
+                <div class="goal-card">
+                    <h3>🎯 Provide Instant Clarity</h3>
+                    <p>Show account health at a glance through key metrics and current campaign status.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>🚨 Surface High-Priority Alerts</h3>
+                    <p>Make critical issues impossible to miss with prominent alert system.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>⚡ Reduce Actions to 1-2 Clicks</h3>
+                    <p>Place most common actions prominently, minimize navigation depth.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>📈 Improve Efficiency</h3>
+                    <p>Streamline common marketing workflows and accelerate decision-making.</p>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>Goal:</strong> Serve as a true productivity tool that directly impacts marketer efficiency and campaign success.
+            </div>
+        </div>
+
+        <!-- Slide 5: Prioritization Framework -->
+        <div class="slide">
+            <h1><span class="icon-large">📊</span>Prioritization Framework</h1>
+            <h2>Impact vs. Effort Analysis</h2>
+            
+            <div class="two-column">
+                <div class="goal-card" style="background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(40, 167, 69, 0.05) 100%); border-color: #28a745;">
+                    <h3 style="color: #28a745;">✅ High Impact, Low Effort</h3>
+                    <ul>
+                        <li>Alert banner</li>
+                        <li>Key metrics overview</li>
+                        <li>Quick actions panel</li>
+                        <li>Active campaigns list</li>
+                    </ul>
+                    <p style="margin-top: 15px; color: #28a745; font-weight: 600; font-size: 1.1em;"><strong>Must-Have</strong></p>
+                </div>
+                <div class="goal-card" style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 193, 7, 0.05) 100%); border-color: #ffc107;">
+                    <h3 style="color: #ff9800;">⚠️ High Impact, Medium Effort</h3>
+                    <ul>
+                        <li>Recent activity feed</li>
+                        <li>Performance snapshot</li>
+                        <li>Campaign indicators</li>
+                    </ul>
+                    <p style="margin-top: 15px; color: #ff9800; font-weight: 600; font-size: 1.1em;"><strong>Should-Have</strong></p>
+                </div>
+            </div>
+
+            <div class="alert-box" style="margin-top: 30px;">
+                <h3>Component Placement Strategy</h3>
+                <p><strong>🔝 Top:</strong> Alerts, Key Metrics, Quick Actions (Highest Priority)</p>
+                <p><strong>📌 Middle:</strong> Active Campaigns, Recent Activity (High Priority)</p>
+                <p><strong>📊 Bottom:</strong> Performance Snapshot (Medium Priority)</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Competitive Benchmarking -->
+        <div class="slide">
+            <h1><span class="icon-large">🏆</span>Competitive Benchmarking</h1>
+            
+            <div class="competitor-card">
+                <h3 style="color: #667eea;">MoEngage</h3>
+                <p><strong>✅ Strengths:</strong> Strong analytics, comprehensive tracking</p>
+                <p><strong>❌ Weaknesses:</strong> Lacks flexible quick actions, requires multiple clicks</p>
+            </div>
+
+            <div class="competitor-card">
+                <h3 style="color: #764ba2;">WebEngage</h3>
+                <p><strong>✅ Strengths:</strong> Excellent segmentation, good automation</p>
+                <p><strong>❌ Weaknesses:</strong> Dashboard cluttered, information overload</p>
+            </div>
+
+            <div class="competitor-card">
+                <h3 style="color: #f093fb;">HubSpot</h3>
+                <p><strong>✅ Strengths:</strong> Great shortcuts, clean interface</p>
+                <p><strong>❌ Weaknesses:</strong> Not tailored for retail marketers, generic dashboard</p>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <h3>🚀 Xeno's Competitive Advantage</h3>
+                <p><strong>Combines best features from competitors but optimized for retail workflows:</strong></p>
+                <ul>
+                    <li>📊 Strong analytics (from MoEngage) + Better action accessibility</li>
+                    <li>👥 Powerful segmentation (from WebEngage) + Cleaner presentation</li>
+                    <li>⚡ Excellent quick actions (from HubSpot) + Retail-specific optimization</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Problem Statement -->
+        <div class="slide">
+            <h1><span class="icon-large">🔍</span>The Problem</h1>
+            <div class="alert-box">
+                <strong>Current State:</strong> Xeno has no homepage/dashboard today
+            </div>
+            
+            <h2>User Pain Points</h2>
+            <div class="two-column">
+                <ul>
+                    <li><strong>📊 Information Overload:</strong> Marketers don't know where to start after logging in</li>
+                    <li><strong>⏰ Reactive Workflow:</strong> Issues are discovered too late, after campaigns have already failed</li>
+                    <li><strong>🔄 Inefficient Navigation:</strong> Common actions require multiple clicks through menus</li>
+                </ul>
+                <ul>
+                    <li><strong>🔍 Lack of Context:</strong> No understanding of account performance trends or anomalies</li>
+                    <li><strong>❌ Missed Opportunities:</strong> Important alerts or opportunities go unnoticed</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>Our Goal:</strong> Create a dashboard that provides immediate context and enables quick, impactful actions
+            </div>
+        </div>
+
+        <!-- Slide 8: Design Principles -->
+        <div class="slide">
+            <h1><span class="icon-large">🎨</span>Design Principles</h1>
+            <div class="two-column">
+                <div class="goal-card">
+                    <h3>🎯 Clarity First</h3>
+                    <p>Show only the most critical information. Use clear visual hierarchy. Avoid information overload.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>⚡ Action-Oriented</h3>
+                    <p>Make the most common actions easily accessible. Surface actionable insights, not just data.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>🔍 Context-Aware</h3>
+                    <p>Show current state (what's happening now). Highlight what needs attention. Provide trends and comparisons.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>📊 Progressive Disclosure</h3>
+                    <p>Show high-level metrics first. Allow drill-down for details. Balance overview with depth.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Key Metrics -->
+        <div class="slide">
+            <h1><span class="icon-large">📈</span>Key Metrics Overview</h1>
+            <p style="margin-bottom: 30px; font-size: 1.3em; color: #666;">Four metrics that provide at-a-glance understanding of account health:</p>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Active Campaigns</h3>
+                    <div class="metric-value">12</div>
+                    <div class="metric-trend">↑ 2 vs last week</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Today's Reach</h3>
+                    <div class="metric-value">45.2K</div>
+                    <div class="metric-trend">↑ 12% vs yesterday</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Revenue Impact</h3>
+                    <div class="metric-value">$125K</div>
+                    <div class="metric-trend">↑ 18% (7 days)</div>
+                </div>
+                <div class="metric-card">
+                    <h3>Engagement Rate</h3>
+                    <div class="metric-value">8.3%</div>
+                    <div class="metric-trend">↑ 0.5% (7 days)</div>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>Why these metrics?</strong> They directly connect to what marketers care about: activity level, daily operations, business impact, and campaign quality.
+            </div>
+        </div>
+
+        <!-- Slide 10: Dashboard Wireframe -->
+        <div class="slide">
+            <h1><span class="icon-large">📐</span>Dashboard Layout</h1>
+            <div class="wireframe">
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ XENO                    [🔔 3] [Create Campaign] [New Offer] [John Doe ▼]   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ⚠️  ALERT: Campaign "Summer Sale" has exceeded budget threshold             │
+│     [Review Budget] [Dismiss]                                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐     │
+│  │ Active       │  │ Today's      │  │ Revenue      │  │ Engagement   │     │
+│  │ Campaigns    │  │ Reach        │  │ Impact       │  │ Rate         │     │
+│  │    12        │  │  45.2K       │  │  $125,450    │  │   8.3%       │     │
+│  │    ↑ 2       │  │  ↑ 12%       │  │  ↑ 18%       │  │  ↑ 0.5%      │     │
+│  └──────────────┘  └──────────────┘  └──────────────┘  └──────────────┘     │
+│                                                                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ACTIVE CAMPAIGNS                                                            │
+│ ┌─────────────────────────────────────────────────────────────────────────┐ │
+│ │ 📱 Summer Sale 2024          [Running]   12.5K sent | 8.2% CTR          │ │
+│ │    WhatsApp • Started 2h ago              [Pause] [View] [Edit]         │ │
+│ ├─────────────────────────────────────────────────────────────────────────┤ │
+│ │ 📧 Welcome Series            [Running]   8.2K sent | 12.1% CTR         │ │
+│ │    Email • Started 1d ago                [Pause] [View] [Edit]          │ │
+│ │ [View All Campaigns →]                                                  │ │
+│ └─────────────────────────────────────────────────────────────────────────┘ │
+│                                                                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ QUICK ACTIONS                    RECENT ACTIVITY & ALERTS                   │
+│ ┌─────────────────────────┐    ┌─────────────────────────────────────────┐  │
+│ │ [📊 Create Campaign]    │    │ 🎉 Campaign "Flash Sale" completed     │  │
+│ │ [🎁 Create Offer]       │    │ ⚠️  Campaign CTR below average         │  │
+│ │ [📈 View Analytics]     │    │ 📊 New segment opportunity detected    │  │
+│ │ [👥 Segments]           │    │                                        │   │
+│ │ [🔄 Automation]         │    │                                        │   │
+│ └─────────────────────────┘    └─────────────────────────────────────────┘  │
+│                                                                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ PERFORMANCE SNAPSHOT                                                        │
+│ ┌─────────────────────────────────────────────────────────────────────────┐ │
+│ │ Campaign Performance (7 days)    Channel Breakdown    Revenue Trend     │ │
+│ │    [Line Chart]                    [Pie Chart]          [Bar Chart]     │ │
+│ └─────────────────────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────────────────────┘</div>
+        </div>
+
+        <!-- Slide 11: Final Dashboard Mockup -->
+        <div class="slide">
+            <h1><span class="icon-large">🎨</span>Final Dashboard Mockup (UI Representation)</h1>
+            <div style="margin-top: 30px; text-align: center;">
+                <img src="Xeno_Dashboard_Mockup.svg" alt="Xeno Dashboard Mockup" style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);" />
+            </div>
+            <div class="info-box" style="margin-top: 30px; text-align: center;">
+                <p style="font-size: 1.1em;"><strong>Clean, professional UI mockup representing the final dashboard design</strong></p>
+                <p style="margin-top: 10px; font-size: 1em; color: #666;">This visual representation shows how the dashboard will look in production, with all components properly styled and aligned.</p>
+            </div>
+        </div>
+
+        <!-- Slide 12: Key Components -->
+        <div class="slide">
+            <h1><span class="icon-large">🧩</span>Key Components Explained</h1>
+            
+            <div class="feature-card">
+                <h2>1. 🚨 Alert Banner</h2>
+                <p>Surfaces critical issues that need immediate attention (campaign errors, budget thresholds, API issues). Prevents problems from going unnoticed.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>2. 📊 Active Campaigns Section</h2>
+                <p>Shows what's running right now with key performance indicators and quick actions. Marketers need to monitor running campaigns to ensure everything is functioning correctly.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>3. ⚡ Quick Actions Panel</h2>
+                <p>Fast access to most common workflows: Create Campaign, Create Offer, View Analytics, Customer Segments, Automation Builder. Reduces clicks for frequent actions.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>4. 📋 Recent Activity & Alerts</h2>
+                <p>Surfaces important events: campaign completions, performance alerts, new opportunities. Helps marketers stay informed and catch issues early.</p>
+            </div>
+
+            <div class="feature-card">
+                <h2>5. 📈 Performance Snapshot</h2>
+                <p>Visual representation of recent performance trends with mini charts. Helps identify patterns and anomalies quickly.</p>
+            </div>
+        </div>
+
+        <!-- Slide 13: Design Decisions -->
+        <div class="slide">
+            <h1><span class="icon-large">💡</span>Key Design Decisions</h1>
+            
+            <div class="two-column">
+                <div class="goal-card">
+                    <h3>Why These Metrics?</h3>
+                    <p>Active Campaigns, Today's Reach, Revenue Impact, and Engagement Rate are actionable and directly tied to marketer goals. Revenue connects efforts to business outcomes.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Why Show Active Campaigns?</h3>
+                    <p>Marketers need to monitor running campaigns in real-time. This prevents issues from going unnoticed and enables quick optimization.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Why Quick Actions?</h3>
+                    <p>Most marketers come to create campaigns or offers. Making these immediately accessible reduces clicks and improves workflow efficiency.</p>
+                </div>
+                <div class="goal-card">
+                    <h3>Why Alert Banner?</h3>
+                    <p>Critical issues need immediate attention. A banner ensures visibility without requiring navigation, preventing costly mistakes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14: User Flows -->
+        <div class="slide">
+            <h1><span class="icon-large">🔄</span>User Flows</h1>
+            
+            <div class="two-column">
+                <div class="goal-card">
+                    <h2>Daily Usage Flow</h2>
+                    <ol>
+                        <li>User logs in → Dashboard loads</li>
+                        <li>User scans alert banner (if any)</li>
+                        <li>User reviews key metrics</li>
+                        <li>User checks active campaigns</li>
+                        <li>User reviews recent activity</li>
+                        <li>User takes action (creates campaign, reviews analytics, etc.)</li>
+                    </ol>
+                </div>
+                <div class="goal-card">
+                    <h2>Issue Resolution Flow</h2>
+                    <ol>
+                        <li>Alert appears in banner</li>
+                        <li>User clicks alert → Navigates to issue detail page</li>
+                        <li>User resolves issue</li>
+                        <li>Returns to dashboard → Alert dismissed</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Success Metrics -->
+        <div class="slide">
+            <h1><span class="icon-large">📊</span>Success Metrics</h1>
+            
+            <div class="two-column">
+                <div class="goal-card">
+                    <h3>👥 User Engagement</h3>
+                    <ul>
+                        <li><strong>Time to First Action:</strong> Target < 30 seconds</li>
+                        <li><strong>Dashboard Return Rate:</strong> % of users returning daily</li>
+                        <li><strong>Quick Action Usage:</strong> % of actions via quick buttons</li>
+                    </ul>
+                </div>
+                <div class="goal-card">
+                    <h3>💼 Business Impact</h3>
+                    <ul>
+                        <li><strong>Issue Resolution Time:</strong> From alert to resolution</li>
+                        <li><strong>Campaign Creation Rate:</strong> Increase in campaigns created</li>
+                        <li><strong>Support Ticket Reduction:</strong> Fewer "where do I find X?" tickets</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>Goal:</strong> Measure genuine usefulness, not just visual impressiveness
+            </div>
+        </div>
+
+        <!-- Slide 16: Conclusion -->
+        <div class="slide">
+            <h1><span class="icon-large">✨</span>Conclusion</h1>
+            
+            <p style="font-size: 1.5em; margin-bottom: 40px; font-weight: 500; color: #555;">
+                This dashboard design prioritizes <span class="highlight">genuine usefulness</span> over visual impressiveness.
+            </p>
+
+            <div class="conclusion-box">
+                <h2>What We Achieve:</h2>
+                <ul>
+                    <li><span class="checkmark">✅</span><strong>Provides Context:</strong> Shows account status and performance at a glance</li>
+                    <li><span class="checkmark">✅</span><strong>Surfaces Issues:</strong> Alerts prevent problems from going unnoticed</li>
+                    <li><span class="checkmark">✅</span><strong>Enables Action:</strong> Quick actions reduce friction for common workflows</li>
+                    <li><span class="checkmark">✅</span><strong>Drives Impact:</strong> Revenue and engagement metrics connect efforts to outcomes</li>
+                </ul>
+            </div>
+
+            <div class="alert-box" style="margin-top: 40px;">
+                <p style="font-size: 1.3em;"><strong>Key Principle:</strong> Balance comprehensive information with simplicity, ensuring marketers can quickly understand their account state and take meaningful actions without feeling overwhelmed.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
